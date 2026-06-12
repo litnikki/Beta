@@ -10,9 +10,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       background: linear-gradient(135deg, #f9a8d4, #c084fc);
       font-family: "Microsoft YaHei", sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     h1 {
       font-size: 4rem;
@@ -26,12 +31,62 @@
       color: white;
       text-shadow: 1px 2px 6px rgba(0,0,0,0.2);
       text-align: center;
-      margin: 0;
+      margin: 0 0 2rem 0;
     }
-    .container {
+    .scene {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .character {
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 6px;
+    }
+    .label {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* 小猪 */
+    @keyframes nudge {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(18px); }
+    }
+    .pig {
+      animation: nudge 1.2s ease-in-out infinite;
+    }
+
+    /* 小女孩 */
+    @keyframes wobble {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(4deg); }
+      75% { transform: rotate(-4deg); }
+    }
+    .girl {
+      animation: wobble 1.2s ease-in-out infinite;
+    }
+
+    /* 心心 */
+    @keyframes floatHeart {
+      0% { opacity: 0; transform: translateY(0) scale(0.5); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-50px) scale(1.2); }
+    }
+    .heart {
+      font-size: 1.4rem;
+      position: absolute;
+      animation: floatHeart 1.5s ease-in-out infinite;
+    }
+    .heart:nth-child(2) { animation-delay: 0.5s; left: 5px; }
+    .heart:nth-child(3) { animation-delay: 1s; left: 20px; }
+    .hearts {
+      position: relative;
+      height: 40px;
+      width: 50px;
     }
   </style>
 </head>
@@ -39,6 +94,95 @@
   <div class="container">
     <h1>Nikki 你好棒 ✨</h1>
     <p>老公说的！</p>
+
+    <div class="scene">
+      <!-- 小猪 -->
+      <div class="character">
+        <div class="label">老公</div>
+        <div class="pig">
+          <svg width="100" height="110" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+            <!-- 身体 -->
+            <ellipse cx="50" cy="80" rx="32" ry="26" fill="#ffb3c6"/>
+            <!-- 头 -->
+            <circle cx="50" cy="48" r="28" fill="#ffb3c6"/>
+            <!-- 耳朵 -->
+            <ellipse cx="28" cy="28" rx="10" ry="13" fill="#ffb3c6"/>
+            <ellipse cx="72" cy="28" rx="10" ry="13" fill="#ffb3c6"/>
+            <ellipse cx="28" cy="29" rx="6" ry="8" fill="#ff85a1"/>
+            <ellipse cx="72" cy="29" rx="6" ry="8" fill="#ff85a1"/>
+            <!-- 眼睛 -->
+            <circle cx="41" cy="45" r="5" fill="white"/>
+            <circle cx="59" cy="45" r="5" fill="white"/>
+            <circle cx="42" cy="46" r="2.5" fill="#333"/>
+            <circle cx="60" cy="46" r="2.5" fill="#333"/>
+            <!-- 鼻子 -->
+            <ellipse cx="50" cy="57" rx="10" ry="7" fill="#ff85a1"/>
+            <circle cx="46" cy="57" r="2.5" fill="#cc5577"/>
+            <circle cx="54" cy="57" r="2.5" fill="#cc5577"/>
+            <!-- 嘴 -->
+            <path d="M44 63 Q50 68 56 63" stroke="#cc5577" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- 腿 -->
+            <rect x="26" y="100" width="14" height="10" rx="5" fill="#ffb3c6"/>
+            <rect x="60" y="100" width="14" height="10" rx="5" fill="#ffb3c6"/>
+            <!-- 尾巴 -->
+            <path d="M82 75 Q95 65 90 55" stroke="#ff85a1" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 爱心 -->
+      <div class="hearts">
+        <span class="heart" style="left:12px">💕</span>
+        <span class="heart" style="left:2px">💖</span>
+        <span class="heart" style="left:22px">💗</span>
+      </div>
+
+      <!-- 小女孩 -->
+      <div class="character">
+        <div class="label">Nikki</div>
+        <div class="girl">
+          <svg width="90" height="130" viewBox="0 0 90 130" xmlns="http://www.w3.org/2000/svg">
+            <!-- 裙子 -->
+            <path d="M20 88 Q45 115 70 88 L65 75 L25 75 Z" fill="#ff85a1"/>
+            <!-- 身体 -->
+            <rect x="28" y="58" width="34" height="22" rx="8" fill="#ffe0ec"/>
+            <!-- 头发（后） -->
+            <ellipse cx="45" cy="38" rx="24" ry="26" fill="#5c3317"/>
+            <!-- 头 -->
+            <circle cx="45" cy="36" r="22" fill="#ffe0c8"/>
+            <!-- 头发刘海 -->
+            <path d="M23 30 Q30 15 45 18 Q60 15 67 30 Q60 20 45 22 Q30 20 23 30Z" fill="#5c3317"/>
+            <!-- 双马尾 -->
+            <path d="M23 35 Q10 25 14 45 Q18 55 25 50" fill="#5c3317"/>
+            <path d="M67 35 Q80 25 76 45 Q72 55 65 50" fill="#5c3317"/>
+            <!-- 蝴蝶结 -->
+            <path d="M23 35 Q18 28 23 30 Q20 35 23 35Z" fill="#ff85a1"/>
+            <path d="M67 35 Q72 28 67 30 Q70 35 67 35Z" fill="#ff85a1"/>
+            <!-- 眼睛 -->
+            <circle cx="38" cy="36" r="5" fill="white"/>
+            <circle cx="52" cy="36" r="5" fill="white"/>
+            <circle cx="39" cy="37" r="2.8" fill="#333"/>
+            <circle cx="53" cy="37" r="2.8" fill="#333"/>
+            <circle cx="40" cy="36" r="1" fill="white"/>
+            <circle cx="54" cy="36" r="1" fill="white"/>
+            <!-- 腮红 -->
+            <ellipse cx="32" cy="42" rx="6" ry="4" fill="#ffb3c6" opacity="0.6"/>
+            <ellipse cx="58" cy="42" rx="6" ry="4" fill="#ffb3c6" opacity="0.6"/>
+            <!-- 嘴 -->
+            <path d="M39 45 Q45 50 51 45" stroke="#cc5577" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- 手臂 -->
+            <line x1="28" y1="65" x2="16" y2="80" stroke="#ffe0c8" stroke-width="8" stroke-linecap="round"/>
+            <line x1="62" y1="65" x2="74" y2="80" stroke="#ffe0c8" stroke-width="8" stroke-linecap="round"/>
+            <!-- 腿 -->
+            <rect x="32" y="112" width="10" height="16" rx="5" fill="#ffe0c8"/>
+            <rect x="48" y="112" width="10" height="16" rx="5" fill="#ffe0c8"/>
+            <!-- 鞋 -->
+            <ellipse cx="37" cy="128" rx="8" ry="4" fill="#c084fc"/>
+            <ellipse cx="53" cy="128" rx="8" ry="4" fill="#c084fc"/>
+          </svg>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
